@@ -911,10 +911,7 @@ def prediction_page():
         )
         st.plotly_chart(fig, use_container_width=True)
 
-        # Tabel Probabilitas (detail teknis)
-        with st.expander("🔍 Detail Teknis: Tabel Probabilitas & Parameter LCG"):
-            st.write(f"Parameter LCG: a={params['a']}, c={params['c']}, m={params['m']}, z₀={params['z0']}")
-            st.dataframe(df_prob, use_container_width=True, hide_index=True)
+       
 
     db.close()
 
@@ -1232,6 +1229,7 @@ if st.session_state.logged_in:
 else:
 
     login_page()
+
 
 
 
