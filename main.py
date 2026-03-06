@@ -217,7 +217,7 @@ def login_page():
             unsafe_allow_html=True
         )
         st.markdown(
-            "<p style='text-align: center; color: #666;'>Sistem Manajemen Laboratorium Terpadu</p>",
+            "<p style='text-align: center; color: #666;'>Sistem Manajemen Laboratorium</p>",
             unsafe_allow_html=True
         )
 
@@ -1229,6 +1229,7 @@ if st.session_state.logged_in:
 else:
 
     login_page()
+
 
 
 
