@@ -240,41 +240,7 @@ def login_page():
                 else:
                     st.error("Username atau Password salah.")
 
-        # --- Forgot Password ---
-        with st.expander("🔑 Lupa Password? Reset dengan Kode"):
-            st.caption("Minta reset code ke Manager. Kode berlaku 24 jam, sekali pakai.")
-
-            with st.form("reset_password_form"):
-                u = st.text_input("Username yang lupa password", key="fp_user")
-                reset_code = st.text_input("Reset Code dari Manager", key="fp_code")
-                new_pw = st.text_input("Password Baru", type="password", key="fp_newpw")
-                new_pw2 = st.text_input("Ulangi Password Baru", type="password", key="fp_newpw2")
-
-                if st.form_submit_button("Reset Password", type="primary", use_container_width=True):
-                    if not u or not reset_code or not new_pw:
-                        st.error("Lengkapi username, reset code, dan password baru.")
-                    elif new_pw != new_pw2:
-                        st.error("Password baru tidak sama.")
-                    else:
-                        db = get_session()
-                        user = db.query(User).filter(User.username == u).first()
-
-                        if not user or not user.reset_code_hash or not user.reset_code_expiry:
-                            st.error("Reset code tidak ditemukan. Minta Manager buatkan kode baru.")
-                        else:
-                            now = datetime.now()
-                            if user.reset_code_expiry < now:
-                                st.error("Reset code sudah kedaluwarsa. Minta Manager buat kode baru.")
-                            elif user.reset_code_hash != hash_text(reset_code.strip()):
-                                st.error("Reset code salah.")
-                            else:
-                                user.password = hash_pass(new_pw)
-                                user.reset_code_hash = None
-                                user.reset_code_expiry = None
-                                db.commit()
-                                st.success("Password berhasil direset. Silakan login dengan password baru.")
-                        db.close()
-
+      
 
 def logout():
     st.session_state.logged_in = False
@@ -1229,6 +1195,7 @@ if st.session_state.logged_in:
 else:
 
     login_page()
+
 
 
 
