@@ -413,7 +413,7 @@ def master_data_page():
     if role == 'manager':
         st.info("ℹ️ Mode Manager: View Only (tidak bisa tambah/edit).")
 
-    tab1, tab2, tab3 = st.tabs(["📦 Data Bahan", "🧰 Data Alat", "🏗️ Data Proyek"])
+    tab1, tab2, tab3 = st.tabs(["📦 Data Bahan", "🧰 Data Alat", "🏗️ Analisis"])
     db = get_session()
 
     # --- TAB BAHAN ---
@@ -1230,4 +1230,5 @@ if st.session_state.logged_in:
         logout()
 
 else:
+
     login_page()
