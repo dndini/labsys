@@ -640,9 +640,9 @@ def transaction_page():
             proyek_list = db.query(Proyek).filter(Proyek.tgl_selesai >= today).all()
             p_opts = {p.id: p.nama_proyek for p in proyek_list}
             if not p_opts:
-                st.warning("Tidak ada proyek aktif (cek tanggal selesai).")
+                st.warning("Tidak ada analisis aktif (cek tanggal selesai).")
             sel_proyek = st.selectbox(
-                "Pilih Proyek Aktif:", options=list(p_opts.keys()),
+                "Pilih Analisis Aktif:", options=list(p_opts.keys()),
                 format_func=lambda x: p_opts[x], index=None
             )
         with col_b:
@@ -1232,5 +1232,6 @@ if st.session_state.logged_in:
 else:
 
     login_page()
+
 
 
