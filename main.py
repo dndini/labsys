@@ -606,17 +606,17 @@ def master_data_page():
     # --- TAB PROYEK ---
     with tab3:
         if role == 'purchasing':
-            with st.expander("➕ Buat Proyek Baru"):
+            with st.expander("➕ Tambahkan Analisis Baru"):
                 with st.form("add_proyek", clear_on_submit=True):
-                    np_name = st.text_input("Nama Proyek")
+                    np_name = st.text_input("Nama Analisis")
                     c1, c2 = st.columns(2)
                     tm = c1.date_input("Tgl Mulai")
                     ts = c2.date_input("Tgl Selesai")
                     desk = st.text_area("Deskripsi")
-                    if st.form_submit_button("Simpan Proyek"):
+                    if st.form_submit_button("Simpan Analisis"):
                         db.add(Proyek(nama_proyek=np_name, tgl_mulai=tm, tgl_selesai=ts, deskripsi=desk))
                         db.commit()
-                        st.success("Proyek dibuat!")
+                        st.success("Proyek ditambahkan!")
                         st.rerun()
 
         df_proyek = pd.read_sql(db.query(Proyek).statement, db.bind)
@@ -1232,3 +1232,4 @@ if st.session_state.logged_in:
 else:
 
     login_page()
+
