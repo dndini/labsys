@@ -1203,7 +1203,7 @@ if st.session_state.logged_in:
             icons = ["speedometer2", "database", "graph-up-arrow", "file-text", "box-arrow-left"]
         elif role == 'purchasing':
             # Hapus Dashboard dari menu Purchasing
-            menu_opts = ["Data Master", "Input Logistik", "Keluar"]
+            menu_opts = ["Data Master", "Input Pemakaian", "Keluar"]
             icons = ["pencil-square", "cart-plus", "box-arrow-left"]
         else:
             menu_opts = ["Keluar"]
@@ -1218,7 +1218,7 @@ if st.session_state.logged_in:
         dashboard_page()
     elif selected == "Data Master":
         master_data_page()
-    elif selected == "Input Logistik":
+    elif selected == "Input Pemakaian":
         transaction_page()
     elif selected == "Prediksi":
         prediction_page()
@@ -1232,4 +1232,5 @@ if st.session_state.logged_in:
 else:
 
     login_page()
+
 
